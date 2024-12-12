@@ -9,8 +9,8 @@ modelconfig = ModelConfig()
 
 def read_data(datacsv_path:str):
     # config parameters
-    y_start = min(min(dataconfig.Y_STRINGS), min(dataconfig.Y_POSITIONS))
-    y_end = max(max(dataconfig.Y_STRINGS), max(dataconfig.Y_POSITIONS))
+    y_start = min(dataconfig.Y_STRINGS)
+    y_end = max(dataconfig.Y_STRINGS)
     x_start = min(dataconfig.X_DATA)
 
     # read data

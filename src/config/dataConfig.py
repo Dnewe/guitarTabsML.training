@@ -14,17 +14,13 @@ class DataConfig:
     
     def set_index_vars(self):
         Y_strings = []
-        Y_positions = []
         X_data = []
         for i,column in enumerate(self.DATA_HEADER):
-            if ((str)(column)).startswith("y_string"):
+            if ((str)(column)).startswith("y_"):
                 Y_strings.append(i)
-            elif ((str)(column)).startswith("y_position"):
-                Y_positions.append(i)
-            elif ((str)(column)).startswith("x"):
+            elif ((str)(column)).startswith("x_"):
                 X_data.append(i)
         setattr(self, "Y_STRINGS", Y_strings)
-        setattr(self, "Y_POSITIONS", Y_positions)
         setattr(self, "X_DATA", X_data)
     
     def initialize_from_json(self, json_path:str):
