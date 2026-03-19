@@ -12,10 +12,10 @@
             "console": "integratedTerminal",
             "args": [
                 "--input",
-                "h:/Documents/projets/GuitarTabsML/data_processed/Finale/Classic",
+                "h:/Documents/projets/GuitarTabsML/data_processed/New/E",
                 //"h:/Documents/projets/GuitarTabsML/data_processed/ReworkedNoteOctave/temp/data_Test.csv",
                 "--output",
-                "h:/Documents/projets/GuitarTabsML/models",
+                "h:/Documents/projets/GuitarTabsML/models/new",
             ]
         },
         {

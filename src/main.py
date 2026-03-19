@@ -1,7 +1,7 @@
 import argparse
 import os
 import sys
-import train
+import pipeline
 
 
 def parse_arguments():
@@ -38,4 +38,4 @@ if __name__ == "__main__":
     # Check parameters
     check_parameters(args)
 
-    train.run(args)
+    pipeline.run(args)

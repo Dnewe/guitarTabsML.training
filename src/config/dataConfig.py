@@ -1,9 +1,13 @@
-from typing import Self, Dict, Any
+from typing import Self, Dict, Any, List
 from utils.fs_io import read_json
 
 
 class DataConfig:
     _instance = None
+    DATA_HEADER:List[str]
+    STRINGS:int
+    Y_STRINGS:List[int]
+    X_DATA:List[int]
 
     def __new__(cls) -> Self:
         if cls._instance is None:
@@ -23,7 +27,7 @@ class DataConfig:
         setattr(self, "Y_STRINGS", Y_strings)
         setattr(self, "X_DATA", X_data)
     
-    def initialize_from_json(self, json_path:str):
+    def load_json(self, json_path:str):
         if not self._initialized:
             metadata = read_json(json_path)
             for key, value in metadata.items():
