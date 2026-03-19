@@ -3,4 +3,4 @@
 
 class DisplayConfig:
 
-    SHOW_ACCURACY_TIME = 10
+    SHOW_ACCURACY_TIME = 5

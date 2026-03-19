@@ -13,5 +13,6 @@ __pycache__/
 
 # Ignore specific folders
 tests/
+old/
 
 # Ignore specific files

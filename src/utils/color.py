@@ -1,17 +1,17 @@
 
 
 
-def red_str(string:str) -> str:
+def red_str(string:str|float) -> str:
     return f'\x1b[1;31;40m{string}\x1b[0m'
 
 
-def green_str(string:str) -> str:
+def green_str(string:str|float) -> str:
     return f'\x1b[1;32;40m{string}\x1b[0m'
 
 
-def gray_str(string:str) -> str:
+def gray_str(string:str|float) -> str:
     return f'\x1b[1;30;40m{string}\x1b[0m'
 
 
-def yellow_str(string:str) -> str:
+def yellow_str(string:str|float) -> str:
     return f'\x1b[1;33;40m{string}\x1b[0m'

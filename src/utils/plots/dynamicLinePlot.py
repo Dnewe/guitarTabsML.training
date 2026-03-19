@@ -20,23 +20,16 @@ class DynamicLinePlot:
         self.xlabel = xlabel
         self.ylabel = ylabel
         self.ylim = ylim
-        self.data = {'x':[],'y':{}}
         self.data = pd.DataFrame({'x':[],'y':[],'id':[]})
-        #self.x = []
-        #self.y = []
         self.fig, self.ax = plt.subplots(figsize=(10, 6))
     
-    def update(self, x_value:float, y_values:Dict[str,float]):
-        #self.x.append(x_value)
-        #self.y.append(y_value)
+    def update(self, x_value:float, y_values:Dict[str,float], point: Tuple[float,float]):
         for id, y in y_values.items():
             self.data.loc[len(self.data)] = [x_value, y, id]
-
-        '''self.data['x'].append(x_value)
-        for id, value in y_values.items():
-            self.data['y'][id].append(value)'''
+            
         self.ax.clear()
         sns.lineplot(data=self.data, x='x', y='y', hue='id', marker=None, ax=self.ax) # ,x=self.x, y=self.y
+        self.ax.scatter(point[0], point[1], color='red', marker='x', s=100, label='Best Model')
         self.ax.set_title(self.title, fontsize=16, fontweight='bold')
         self.ax.set_xlabel(self.xlabel, fontsize=14)
         self.ax.set_ylabel(self.ylabel, fontsize=14)

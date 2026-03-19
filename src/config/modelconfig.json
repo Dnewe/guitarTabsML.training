@@ -1,7 +1,12 @@
 {
-    "size_layer1": 48,
-    "train_prop": 0.02,
-    "iterations": 5000,
-    "alpha": 0.01
-    
+    "layers":{"0":["fc",277,192,"relu"],
+              "1":["fc",192,128,"relu"],
+              "2":["fc",128,6,"sigmoid"]},
+    "train_size": 300000,
+    "val_size": 20000,
+    "iterations": 500,
+    "alpha": 0.003,
+    "batch_size": 200,
+    "earlystop_patience": 50,
+    "momentum": 0.9
 }

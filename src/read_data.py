@@ -23,20 +23,23 @@ def read_data(datacsv_path:str):
     print(data.shape)
 
     # separate data
-        # dev ((int) (m-(config.TRAIN_PROP)*m)):m
-    data_dev = data[((int) ((modelconfig.TRAIN_PROP)*m)): m].T# [0:((int) ((1-config.TRAIN_PROP)*m))].T
-    Y_dev = data_dev[y_start:y_end+1]
-    X_dev = data_dev[x_start:n]
-        # train 0:((int) ((1-config.TRAIN_PROP)*m))
-    data_train = data[0 : ((int) ((modelconfig.TRAIN_PROP)*m))].T # ((int) (m-(config.TRAIN_PROP)*m)):m].T
-    Y_train = data_train[y_start:y_end+1]
-    X_train = data_train[x_start:n]
+    data_train = data[0 : modelconfig.TRAIN_SIZE]
+    data_val = data[modelconfig.TRAIN_SIZE : modelconfig.TRAIN_SIZE+modelconfig.VAL_SIZE]
+    data_test = data[modelconfig.TRAIN_SIZE+modelconfig.VAL_SIZE:]
 
-    # adujst X
-    min_value = max(np.min(X_train[X_train>0]), np.min(X_dev[X_dev>0]))
-    X_dev += -min_value+1
-    X_train += -min_value+1
+    # separate features and labels
+    X_train = data_train[:, x_start:]
+    Y_train = data_train[:, :x_start]
+    X_val = data_val[:, x_start:]
+    Y_val = data_val[:, :x_start]
+    X_test = data_test[:, x_start:]
+    Y_test = data_test[:, :x_start]
 
-    print(Y_train.shape)
+    # normalize features
+    train_mean = X_train.mean()
+    train_std = X_train.std()
+    X_train = (X_train - train_mean) / train_std
+    X_val = (X_val - X_val.mean()) / X_val.std()
+    X_test = (X_test - X_test.mean()) / X_test.std()
 
-    return Y_dev, X_dev, Y_train, X_train
+    return X_train, Y_train, X_val, Y_val, X_test, Y_test, train_mean, train_std
